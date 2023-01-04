@@ -26,15 +26,18 @@ function App() {
 
   }
 
-  const roleRemoved = (option: any) => {
-    console.log(">>>>>>>>>>> roleRemoved = ", option);
+  const roleRemoved = (roleLabel: any) => {
+    console.log(">>>>>>>>>>> roleRemoved = ", roleLabel);
     setSelectedRoles(
       selectedRoles.filter(function (role: any) {
-        return role !== option;
+        return role !== roleLabel;
       })
     )
 
-    setAvailableRoles([...availableRoles, { value: "d", label: option }])
+    setAvailableRoles([
+      ...availableRoles,
+      Roles.find((role: any) => role.label === roleLabel) as selectType
+    ])
 
   }
 
@@ -44,9 +47,9 @@ function App() {
     <section>
       <SelectComp returnFunction={roleSelected}>{availableRoles}</SelectComp>
       <hr />
-   
+  
       { 
-      selectedRoles.map((role, index) => (<RoleSelectedRow key={index} returnFunction={roleRemoved}>{role}</RoleSelectedRow>))
+      selectedRoles.map((role, index) => (<RoleSelectedRow key={index} returnFunction={roleRemoved} >{role}</RoleSelectedRow>))
       }
     </section>
   );

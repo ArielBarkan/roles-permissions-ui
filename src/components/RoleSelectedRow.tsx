@@ -17,7 +17,7 @@ const RoleSelectedRow = (props: any) => {
 
     <RoleContainer>
       <span>{role}</span>
-      <span><SelectComp returnFunction={permissionUpdate} isMulti>{Permissions}</SelectComp></span>
+      <span><SelectComp returnFunction={permissionUpdate} isMulti leaveOpenOnSelect>{Permissions}</SelectComp></span>
       <button onClick={() => returnToParent(role)} >X</button>
     </RoleContainer>
   )

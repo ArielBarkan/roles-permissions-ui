@@ -8,6 +8,7 @@ const SelectComp = (props: any) => {
 
   const options: selectType[] = props.children;
   const isMultiProp: boolean = props.isMulti
+  const isLeaveOpenOnSelect: boolean = !props.leaveOpenOnSelect
   const [selectedOption, setSelectedOption] = useState();
 
   const returnToParent = (selectedValue: any) => {
@@ -24,6 +25,7 @@ const SelectComp = (props: any) => {
       }}
       options={options}
       isMulti={isMultiProp}
+      closeMenuOnSelect={isLeaveOpenOnSelect}
     />
   )
 }
