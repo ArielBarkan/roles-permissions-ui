@@ -1,12 +1,9 @@
 // React imports
 import React, { useState } from "react";
 import Select, { Options } from 'react-select';
+import { selectType } from "../types";
 
 
-type selectType = {
-  value: string,
-  label: string,
-}
 const SelectComp = (props: any) => {
 
   const options: selectType[] = props.children;

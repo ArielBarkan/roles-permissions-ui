@@ -2,24 +2,27 @@
 import React, { useState } from 'react';
 
 // Custom imports
-import { Roles, Permissions } from './db';
+import { selectType } from './types';
+import { Roles } from './db';
 import { SelectComp, RoleSelectedRow } from './components';
 
 function App() {
 
-  const [availableRoles, setAvailableRoles] = useState(Roles);
-  const [selectedRoles, setSelectedRoles] = useState([""]);
+  const [availableRoles, setAvailableRoles] = useState<selectType[]>(Roles);
+  const [selectedRoles, setSelectedRoles] = useState<string[] >([]);
 
 
   const roleSelected = (option: any) => {
     console.log(">>>>>>>>>>> roleSelected = ", option);
     setAvailableRoles(
       availableRoles.filter(function (role: any) {
-        return role.label != option.label;
+        return role.label !== option.label;
       })
     )
 
-    setSelectedRoles([...selectedRoles, option.label])
+    selectedRoles.length ?
+      setSelectedRoles([...selectedRoles, option?.label]) :
+      setSelectedRoles([option?.label])
 
   }
 
@@ -27,7 +30,7 @@ function App() {
     console.log(">>>>>>>>>>> roleRemoved = ", option);
     setSelectedRoles(
       selectedRoles.filter(function (role: any) {
-        return role != option;
+        return role !== option;
       })
     )
 
@@ -35,17 +38,16 @@ function App() {
 
   }
 
-  const permissionSelected = (option: any) => {
-    console.log(">>>>>>>>>>> permissionSelected = ", option);
-  }
+  
 
   return (
     <section>
       <SelectComp returnFunction={roleSelected}>{availableRoles}</SelectComp>
       <hr />
-      <SelectComp returnFunction={permissionSelected} isMulti>{Permissions}</SelectComp>
-      <hr />
-      {selectedRoles.map((role, index) => (<RoleSelectedRow key={index} returnFunction={roleRemoved}>{role}</RoleSelectedRow>))}
+   
+      { 
+      selectedRoles.map((role, index) => (<RoleSelectedRow key={index} returnFunction={roleRemoved}>{role}</RoleSelectedRow>))
+      }
     </section>
   );
 }
