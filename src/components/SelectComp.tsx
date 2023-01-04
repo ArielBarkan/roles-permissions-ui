@@ -1,6 +1,6 @@
 // React imports
 import React, { useState } from "react";
-import Select, { Options } from 'react-select';
+import Select from 'react-select';
 import { selectType } from "../types";
 
 
