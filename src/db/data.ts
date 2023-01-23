@@ -1,8 +1,8 @@
 
 const Roles = [
-  { value: 'r1', label: 'Role 1' },
-  { value: 'r2', label: 'Role 2' },
-  { value: 'r3', label: 'Role 3' },
+  { value: 'r1', label: 'Admin' },
+  { value: 'r2', label: 'User' },
+  { value: 'r3', label: 'Helper' },
   { value: 'r4', label: 'Role 4' },
   { value: 'r5', label: 'Role 5' },
   { value: 'r6', label: 'Role 6' },
