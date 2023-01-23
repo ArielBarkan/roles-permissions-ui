@@ -9,7 +9,7 @@ import { SelectComp, RoleSelectedRow } from './components';
 function App() {
 
   const [availableRoles, setAvailableRoles] = useState<selectType[]>(Roles);
-  const [selectedRoles, setSelectedRoles] = useState<string[] >([]);
+  const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
 
 
   const roleSelected = (option: any) => {
@@ -41,15 +41,16 @@ function App() {
 
   }
 
-  
+
 
   return (
     <section>
       <SelectComp returnFunction={roleSelected}>{availableRoles}</SelectComp>
       <hr />
-  
-      { 
-      selectedRoles.map((role, index) => (<RoleSelectedRow key={index} returnFunction={roleRemoved} >{role}</RoleSelectedRow>))
+      <hr />
+
+      {
+        selectedRoles.map((role, index) => (<RoleSelectedRow key={index} returnFunction={roleRemoved} >{role}</RoleSelectedRow>))
       }
     </section>
   );
